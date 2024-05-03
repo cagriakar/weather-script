@@ -2,7 +2,7 @@
   // Function to fetch weather data
   function fetchWeather(latitude, longitude) {
     const url = `https://europe-west1-amigo-actions.cloudfunctions.net/recruitment-mock-weather-endpoint/forecast?appid=a2ef86c41a&lat=${latitude}&lon=${longitude}&&units=metric`;
-    return fetch(url)
+    return fetch('ds')
       .then((response) => response.json())
       .catch((error) => console.error('Error fetching weather data:', error));
   }
@@ -31,13 +31,16 @@
     }
 
     const weatherContainer = document.createElement('span');
-    weatherContainer.classList.add('weather-info');
+    weatherContainer.style.margin = 'auto auto auto 3ch';
+    weatherContainer.style.color = 'darkgrey';
 
-    const temperature = document.createElement('p');
-    temperature.textContent = `Temperature: ${weatherData.list[0].main.temp}°C`;
+    const temperature = document.createElement('span');
+    temperature.textContent = `${Math.round(weatherData.list[0].main.temp)}°C `;
 
-    const description = document.createElement('p');
-    description.textContent = `Description: ${weatherData.weather[0].description}`;
+    const description = document.createElement('span');
+    description.textContent = `(${weatherData.list[0].weather[0].description})`;
+    description.style.margin = 'auto auto auto 1ch';
+
 
     weatherContainer.appendChild(temperature);
     weatherContainer.appendChild(description);
@@ -45,7 +48,7 @@
     // Find a suitable location on the page to insert the weather container
     const placeSummaryRegion = document.querySelector('[data-testid*="place-summary-region"]');
     if (placeSummaryRegion) {
-      placeSummaryRegion.insertAdjacentElement('afterend',weatherContainer);
+      placeSummaryRegion.insertAdjacentElement('beforeend', weatherContainer);
     } else {
       console.warn('Unable to find element to display weather information');
     }
