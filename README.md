@@ -24,3 +24,20 @@ The script consists of three main functions:
 - `displayWeather(weatherData)`: This function showcases the fetched weather information on the property's page. It generates a weather container element and embeds it into an appropriate location on the page.
 
 Furthermore, the script features functionality to automatically refresh the weather information when users navigate between pages. It relies on the `window.onstorage` event to identify changes in the session storage and promptly updates the weather accordingly.
+
+
+In addition to above, to incorporate this feature into a website, one can add the following script to their source code:
+
+```js
+<script src='https://cdn.jsdelivr.net/gh/cagriakar/weather-script-js@main/script.js'/>
+```
+
+Alternatively, for easier integration during development or testing on the National Trust site, you can use Chrome code snippets:
+
+```js
+let script = document.createElement('script')
+script.src = 'https://cdn.jsdelivr.net/gh/cagriakar/weather-script-js@main/script.js'
+document.head.appendChild(script)
+```
+
+These options make it simple to enhance the National Trust website with real-time weather updates for each property, enriching the user experience and aiding in trip planning.
