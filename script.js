@@ -76,7 +76,3 @@ window.onstorage = () => {
     updatePropertyPagesWithWeather();
   }
 };
-
-window.onload = () => {
-    updatePropertyPagesWithWeather();
-}
